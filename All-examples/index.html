@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Javascript Ajax - live Search</title>
+	<style>
+		body {
+			font-family: Arial;
+			font-size: 1.5em;
+		}
+
+	</style>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse "></nav>
+	<div class="container">
+		<button id="loadbutton">Load</button>
+		<div id="update"></div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!--<script>
+
+	//XHR Request
+		var request = new XMLHttpRequest();
+
+		request.open('GET', 'data.txt', false);
+		request.send();
+		if (request.status === 200) {
+			console.log(request);
+			document.writeln(request.responseText);
+		}
+
+	</script>-->
+
+
+	<!--<script>
+		var request = new XMLHttpRequest();
+
+		request.open('GET', 'data.txt');
+		request.onreadystatechange = function() {
+			if (request.readyState === 4 && request.status === 200) {
+				console.log(request);
+				document.writeln(request.responseText);
+			}
+		}
+		request.send();
+
+	</script>-->
+
+	<!--<script>
+	var request;
+
+	if (window.XMLHttpRequest) {
+		request = new XMLHttpRequest();
+	} else {
+		request = new ActiveXObject('Microsoft.XMLHTTP');
+	}
+
+	request.open('GET', 'data.txt');
+	request.onreadystatechange = function() {
+		if (request.readyState === 4 && request.status === 200) {
+			console.log(request);
+			document.writeln(request.responseText);
+		}
+	}
+	request.send();
+</script>-->
+
+	<!--<script>
+		var request;
+
+		if (window.XMLHttpRequest) {
+			request = new XMLHttpRequest();
+		} else {
+			request = new ActiveXObject('Microsoft.XMLHTTP');
+		}
+
+		request.open('GET', 'data.txt');
+		request.onreadystatechange = function() {
+			if (request.readyState === 4 && request.status === 200) {
+				var modify = document.getElementById('update');
+
+				modify.innerHTML = request.responseText;
+			}
+		}
+		request.send();
+
+	</script>-->
+
+	<!--<script>
+		var request;
+
+		if (window.XMLHttpRequest) {
+			request = new XMLHttpRequest();
+		} else {
+			request = new ActiveXObject('Microsoft.XMLHTTP');
+		}
+
+		request.open('GET', 'data.xml');
+		request.onreadystatechange = function() {
+			if (request.readyState === 4 && request.status === 200) {
+
+				console.log(request.responseXML);
+				console.log(request.responseXML.getElementsByTagName('name')[0].firstChild.nodeValue);
+
+				//console.log(request.responseXML.getElementsByTagName('name')[1].childNodes[0].nodeValue);
+
+				var items = request.responseXML.getElementsByTagName('name');
+
+				console.log(items);
+
+				var output = '<ul>';
+				for (var i = 0; i < items.length; i++) {
+					output += '<li>' + items[i].firstChild.nodeValue + '</li>'
+				}
+				output += '</ul>'
+
+				document.getElementById('update').innerHTML = output;
+			}
+		}
+		request.send();
+
+	</script>-->
+
+	<!--<script>
+		var request;
+
+		if (window.XMLHttpRequest) {
+			request = new XMLHttpRequest();
+		} else {
+			request = new ActiveXObject('Microsoft.XMLHTTP');
+		}
+
+		request.open('GET', 'data.json');
+		request.onreadystatechange = function() {
+			if (request.readyState === 4 && request.status === 200) {
+				var items = JSON.parse(request.responseText);
+				console.log(items);
+
+				var output = '<div>';
+				
+				for (var key in items) {
+					output += '<h1>' + items[key].name + '</h1>'
+					output += '<p>' + items[key].bio + '</p>'
+				}
+				
+				output += '</div>';
+
+
+				document.getElementById('update').innerHTML = output;
+
+			}
+		}
+		request.send();
+
+	</script>-->
+
+
+
+	<!--<script>
+		var request;
+
+		if (window.XMLHttpRequest) {
+			request = new XMLHttpRequest();
+		} else {
+			request = new ActiveXObject('Microsoft.XMLHTTP');
+		}
+
+		request.open('GET', 'http://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric&appid=93a9d810d8e439e88d9d7207dd609880');
+		request.onreadystatechange = function() {
+			if (request.readyState === 4 && request.status === 200) {
+				var items = JSON.parse(request.responseText);
+				console.log(items.list);
+				console.log(items.list.length);
+				console.log(items.list[1].weather[0].description);
+
+
+				var output = '<div>';
+
+				for (var i = 0; i < items.list.length; i++) {
+					output += '<h2>' + items.list[i].name + '</h2>'
+					output += '<i>' + items.list[i].weather[0].description + '</i>'
+					output += '<p>' + items.list[i].wind.speed + ' , ' + items.list[i].wind.deg + '</p>'
+					console.log(items.list[i].weather[0].description);
+				}
+
+				output += '</div>';
+
+
+				document.getElementById('update').innerHTML = output;
+
+			}
+		}
+		request.send();
+
+	</script>-->
+
+
+
+	<!--<script>
+		var myButton = document.getElementById('loadbutton');
+		myButton.onclick = loadAjax;
+
+		function loadAjax() {
+
+			var request;
+
+			if (window.XMLHttpRequest) {
+				request = new XMLHttpRequest();
+			} else {
+				request = new ActiveXObject('Microsoft.XMLHTTP');
+			}
+
+			request.open('GET', 'data.json');
+			request.onreadystatechange = function() {
+				if (request.readyState === 4 && request.status === 200) {
+					var items = JSON.parse(request.responseText);
+					console.log(items);
+
+					var output = '<div>';
+
+					for (var key in items) {
+						output += '<h1>' + items[key].name + '</h1>'
+						output += '<p>' + items[key].bio + '</p>'
+					}
+
+					output += '</div>';
+
+
+					document.getElementById('update').innerHTML = output;
+
+				}
+			}
+			request.send();
+		}
+
+	</script>-->
+
+	<!--<script>
+	$.getJSON('data.json', function(data) {
+		var output = '<ul>';
+		$.each(data, function(key, val) {
+			output += '<li>' + val.name + '</li>'
+		});
+		output += '</ul>';
+
+		$('#update').html(output);
+	});
+</script>-->
+
+	<script>
+		$.getJSON('http://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric&appid=93a9d810d8e439e88d9d7207dd609880', function(data) {
+			console.log(data);
+
+			var output = '<ul>';
+			$.each(data.list, function(key, val) {
+				//console.log(data.list);
+				output += '<h2>' + val.name + '</h2>'
+				output += '<i>' + val.weather[0].description + '</i>'
+				output += '<p>' + val.wind.speed + ' , ' + val.wind.deg + '</p>'
+			});
+			output += '</ul>';
+
+			$('#update').html(output);
+		});
+
+	</script>
+
+
+
+
+
+</body>
+
+</html>
