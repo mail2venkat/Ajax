@@ -1,3 +1,3 @@
 # Ajax.
 
-Run the Execise file in a localsever (eg: Xampp/node server).
+Run the Execise files in localsever (eg: Xampp/node server).
